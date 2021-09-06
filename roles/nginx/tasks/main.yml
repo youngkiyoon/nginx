@@ -1,0 +1,20 @@
+- name: libselinux 설치
+  yum:
+    name: libselinux-python
+    state: present
+
+- name: EPEL리포지토리 설치
+  yum: 
+    name: epel
+    state: present
+
+- name: nginx설치
+  yum: 
+    name: nginx
+    state: present
+  service:
+    name: nginx
+    state: started
+    enable: true
+  
+    
