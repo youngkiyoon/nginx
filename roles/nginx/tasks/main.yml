@@ -13,9 +13,8 @@
     name: nginx
     state: present
 
-- service:
+- name: nginx실행
+  service:
     name: nginx
     state: started
-    enable: true
-  
-    
+    enable: true   
