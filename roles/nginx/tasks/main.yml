@@ -8,6 +8,11 @@
 #    name: epel
 #    state: present
 
+#Amazon linux에 nginx 설치할 수 있도록 설정하기
+- name: Enable nginx for amazon linux 2
+  shell: "amazon-linux-extras enable nginx1.12"
+  become: yes
+
 - name: nginx설치
   yum: 
     name: nginx
@@ -17,4 +22,4 @@
   service:
     name: nginx
     state: started
-    enable: true   
+    enable: true
