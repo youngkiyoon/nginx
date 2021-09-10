@@ -1,25 +1,22 @@
-#- name: libselinux 설치
-#  yum:
-#    name: libselinux-python
-#    state: present
+---
+- name: Host Info Facts
+  command: "{{ command }}"
+  register: host_info
 
-#- name: EPEL리포지토리 설치
-#  yum: 
-#    name: epel
-#    state: present
+- name: Print Host Name
+  debug:
+    msg: "hostName is {{ host_info.stdout }}"
 
-#Amazon linux에 nginx 설치할 수 있도록 설정하기
 - name: Enable nginx for amazon linux 2
   shell: "amazon-linux-extras enable nginx1.12"
   become: yes
 
-- name: nginx설치
-  yum: 
+- name: Install Nginx
+  yum:
     name: nginx
     state: present
 
-- name: nginx실행
+- name: Start Nginx
   service:
     name: nginx
     state: started
-    enable: true
